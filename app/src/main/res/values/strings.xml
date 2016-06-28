@@ -4,10 +4,7 @@
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
     <string-array name="nav_drawer_items">
-        <item>SystemUI Mods</item>
-        <item>Phone Mods</item>
-        <item>Framework and General</item>
-        <item>Useful Apps</item>
+        <item>Reboot Menue Settings</item>
         <item>Set Theme</item>
     </string-array>
     <string-array name="clock_position_entries">
