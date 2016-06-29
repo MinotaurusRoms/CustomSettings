@@ -6,4 +6,10 @@
         android:defaultValue="true"
         android:summaryOn="Reboot Recovery will be shown"
         android:summaryOff="Currently removed" />
+    <SwitchPreference
+        android:title="Emergency Mode"
+        android:key="power_emergency"
+        android:defaultValue="true"
+        android:summaryOn="Emergency mode will be shown"
+        android:summaryOff="Currently removed" />
 </PreferenceScreen>

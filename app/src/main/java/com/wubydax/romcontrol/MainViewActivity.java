@@ -96,6 +96,7 @@ public class MainViewActivity extends AppCompatActivity
         * 8. You need to add same items to the int array in NavigationDrawerFragment, which has the same method*/
         String[] mTitles = getResources().getStringArray(R.array.nav_drawer_items);
         int[] mIcons = {R.drawable.ic_settings,
+                R.drawable.ic_settings,
                 R.drawable.ic_settings};
         for (int i = 0; i < mTitles.length && i < mIcons.length; i++) {
             com.wubydax.romcontrol.NavItem current = new com.wubydax.romcontrol.NavItem();
@@ -118,6 +119,9 @@ public class MainViewActivity extends AppCompatActivity
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new RebootMenueFragment()).commitAllowingStateLoss();
                 break;
             case 1:
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new UIPrefsFragment()).commitAllowingStateLoss();
+                break;
+            case 2:
                 showThemeChooserDialog();
                 break;
 
