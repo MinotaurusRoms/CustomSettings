@@ -14,7 +14,7 @@
             android:summaryOn="Show"
             android:summaryOff="Hide" />
         <SwitchPreference
-            android:title="3Minit Battery"
+            android:title="3Minit Battery(after toggle needs seconds to apply)"
             android:key="minit_battery_visible"
             android:defaultValue="false"
             android:summaryOn="Show"

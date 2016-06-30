@@ -72,9 +72,18 @@ public class MainViewActivity extends AppCompatActivity
         /*Calling theme selector class to set theme upon start activity*/
         ThemeSelectorUtility theme = new ThemeSelectorUtility(this);
         theme.onActivityCreateSetTheme(this);
+        setContentView(R.layout.activity_main_view);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_drawer);
+
+        // Set up the drawer. Look in NavigationDrawerFragment for more details
+        mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar, MainViewActivity.this);
+        initRebootMenu();
         //Getting root privileges upon first boot or if was not yet given su
-        CheckSu suPrompt = new CheckSu();
-        suPrompt.execute();
+
 
 
         // populate the navigation drawer
