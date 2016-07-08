@@ -4,8 +4,9 @@
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
     <string-array name="nav_drawer_items">
-        <item>Reboot Menue Settings</item>
-        <item>SystemUI Settings</item>
+        <item>Reboot Menue Mods</item>
+        <item>SystemUI Mods</item>
+        <item>Launcher Mods</item>
         <item>Set Theme</item>
     </string-array>
     <string-array name="clock_position_entries">

@@ -10,14 +10,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.TypedValue;
@@ -36,7 +41,9 @@ import com.wubydax.romcontrol.prefs.MyListPreference;
 import com.wubydax.romcontrol.prefs.SeekBarPreference;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -133,6 +140,28 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     PreferenceScreen preferenceParent = preferenceParentTree.get(ps);
                     preferenceParent.removePreference(ps);
 
+                }
+            }else if(ps.getKey().equals("notification_panel_bg")) {
+                String uriString = Settings.System.getString(cr, ps.getKey());
+                Uri uri = uriString != null && !uriString.equals("") ? Uri.parse(uriString) : null;
+                if(uri != null) {
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = cr.openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        Drawable drawable = new BitmapDrawable(c.getResources(), bitmap);
+                        ps.setIcon(drawable);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (inputStream != null) {
+                            try {
+                                inputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -296,6 +325,54 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                if (key.equals("minit_battery_visible")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("psm_notif")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("data_usage_colors")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("expanded_bg_colors")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
@@ -313,6 +390,42 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 } else {
                     l.setSummary("");
                 }
+                if (key.equals("doubletap")) {
+                    Command c = new Command(0, "com.sec.android.app.launcher");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("swipe_up")) {
+                    Command c = new Command(0, "com.sec.android.app.launcher");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("swipe_down")) {
+                    Command c = new Command(0, "com.sec.android.app.launcher");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case "MyEditTextPreference":
                 MyEditTextPreference et = (MyEditTextPreference) pf.findPreference(key);
@@ -324,6 +437,78 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "ColorPickerPreference":
                 ColorPickerPreference cpp = (ColorPickerPreference) pf.findPreference(key);
                 cpp.setColor(sharedPreferences.getInt(key, Color.WHITE));
+                if (key.equals("CustomCarrierColor")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("data_usage_color")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("next_alarm_color")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("notification_background_color")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("toggle_icon_on_color")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (key.equals("toggle_icon_off_color")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
         }
         /*Calling main method to handle updating database based on preference changes*/
@@ -412,7 +597,10 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             } catch (ActivityNotFoundException anf) {
                 Toast.makeText(c, "App not installed or intent not valid", Toast.LENGTH_SHORT).show();
             }
-
+        } else if(preference.getKey() != null && preference.getKey().equals("notification_panel_bg")) {
+            Intent getContentIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            getContentIntent.setType("image/*");
+            pf.startActivityForResult(getContentIntent, 46);
         } else if (preference.getKey() == null) {
 //            setToolbarForNested(preference);
         }

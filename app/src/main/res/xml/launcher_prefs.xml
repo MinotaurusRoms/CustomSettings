@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Gesture anywhere on Home screen" />
+    <com.wubydax.romcontrol.prefs.MyListPreference android:entries="@array/launcher_gesture_entries"
+        android:title="Double tap"
+        android:key="doubletap"
+        android:summary="%s"
+        android:entryValues="@array/launcher_gesture_values" />
+    <com.wubydax.romcontrol.prefs.MyListPreference
+        android:entries="@array/launcher_gesture_entries"
+        android:title="Swipe Up"
+        android:key="swipe_up"
+        android:summary="%s"
+        android:entryValues="@array/launcher_gesture_values" />
+    <com.wubydax.romcontrol.prefs.MyListPreference
+        android:entries="@array/launcher_gesture_entries"
+        android:title="Swipe Down"
+        android:key="swipe_down"
+        android:summary="%s"
+        android:entryValues="@array/launcher_gesture_values" />
+</PreferenceScreen>

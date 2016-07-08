@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Status Bar Mods">
+    <PreferenceScreen android:title="Signal Statusbar">
         <com.wubydax.romcontrol.prefs.MyListPreference
             android:entries="@array/SignalPositionName"
             android:title="Signal Position"
             android:key="leftsignal"
             android:defaultValue="0"
             android:entryValues="@array/SignalPositionValue" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Battery Statusbar">
         <SwitchPreference
             android:title="Stock Battery"
             android:key="hide_battery_stock"
@@ -14,10 +16,238 @@
             android:summaryOn="Show"
             android:summaryOff="Hide" />
         <SwitchPreference
-            android:title="3Minit Battery(after toggle needs seconds to apply)"
+            android:title="3MinitBattery"
             android:key="minit_battery_visible"
             android:defaultValue="false"
             android:summaryOn="Show"
             android:summaryOff="Hide" />
-    </PreferenceCategory>
+        <PreferenceScreen android:title="Battery Bar" android:summary="Display Line on top for battery">
+            <com.wubydax.romcontrol.prefs.MyListPreference
+                android:entries="@array/battery_bar_entries"
+                android:title="Battery Bar"
+                android:key="battery_bar"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/battery_bar_values" />
+            <SwitchPreference
+                android:title="Battery bar animation"
+                android:key="battery_bar_animate"
+                android:defaultValue="false"
+                android:summaryOn="Charging animation enabled"
+                android:summaryOff="Animation disabled" />
+            <com.wubydax.romcontrol.prefs.MyListPreference
+                android:entries="@array/battery_bar_style_entries"
+                android:title="Battery bar style"
+                android:key="battery_bar_style"
+                android:summary="%s"
+                android:defaultValue="1"
+                android:entryValues="@array/battery_bar_style_values" />
+            <com.wubydax.romcontrol.prefs.MyListPreference
+                android:entries="@array/battery_bar_thickness_entries"
+                android:title="Thickness of battery bar"
+                android:key="battery_bar_thickness"
+                android:summary="%s"
+                android:defaultValue="2"
+                android:entryValues="@array/battery_bar_thickness_values" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Battery Bar Color"
+                android:key="battery_bar_color"
+                android:summary="Choose color of battery bar"
+                android:defaultValue="\#ffffffff"  />
+        </PreferenceScreen>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="CarrierLabel Statusbar">
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Custom Carrier Color"
+            android:key="CustomCarrierColor"
+            android:defaultValue="\#ffffffff"
+            alphaSlider="true" />
+        <SwitchPreference
+            android:title="Custom Carrier Right of Wifi/Signal Combo"
+            android:key="CustomCarrierRight"
+            android:defaultValue="false"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+        <SwitchPreference
+            android:title="Custom Carrier Center of Wifi/Signal Combo"
+            android:key="CustomCarrierCenter"
+            android:defaultValue="false"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+        <SwitchPreference
+            android:title="Custom Carrier Left of Wifi/Signal Combo"
+            android:key="CustomCarrierLeft"
+            android:defaultValue="false"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Notifications">
+        <SwitchPreference
+            android:title="Power Saving Mode Notifications"
+            android:key="psm_notif"
+            android:defaultValue="false"
+            android:summaryOn="Power Saving Mode notification is enabled"
+            android:summaryOff="Power Saving Mode notification is disabled" />
+        <com.wubydax.romcontrol.prefs.MyListPreference
+            android:entries="@array/lockscreen_notif_entries"
+            android:title="Notifications Shown on Lockscreen"
+            android:key="lockscreen_notifications"
+            android:defaultValue="2"
+            android:summary="Number shown on lockscreen"
+            android:entryValues="@array/lockscreen_notif_values" />
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Notification background color"
+            android:key="notification_background_color"
+            android:summary="Choose color"
+            android:defaultValue="\#fffafafa"
+            alphaSlider="true"
+            hexValue="true" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Lockscreen">
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Text Color hours"
+            android:key="kg_clock_hours_color"
+            android:summary="Choose a color"
+            android:defaultValue="\#ffffffff"
+            alphaSlider="true" />
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Text Color minutes"
+            android:key="kg_clock_minutes_color"
+            android:summary="Choose a color"
+            android:defaultValue="\#ffffffff"
+            alphaSlider="true" />
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Text Color seconds"
+            android:key="kg_clock_second_color"
+            android:summary="Choose a color"
+            android:defaultValue="\#ffffffff"
+            alphaSlider="true" />
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="The color of the date text"
+            android:key="kg_date_color"
+            android:summary="Choose a color"
+            android:defaultValue="\#ffffffff"
+            alphaSlider="true" />
+        <SwitchPreference android:title="Show seconds"
+            android:key="lock_seconds"
+            android:defaultValue="0"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+        <SwitchPreference
+            android:title="Hide Next Alarm"
+            android:key="next_alarm_toggle"
+            android:summaryOn="Hide"
+            android:summaryOff="Show" />
+        <com.wubydax.romcontrol.prefs.ColorPickerPreference
+            android:title="Next Alarm Text Color"
+            android:key="next_alarm_color"
+            android:summary="Choose color" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Expanded view">
+        <SwitchPreference
+            android:title="Single swipe for expanded Quickpanel"
+            android:key="tweaks_qs_pulldown"
+            android:defaultValue="false"
+            android:summaryOn="Feature is enabled"
+            android:summaryOff="Feature is disabled" />
+        <SwitchPreference android:title="Make Ongoing Notifications Removable"
+            android:key="ongoing_notifications"
+            android:defaultValue="false"
+            android:summaryOn="Ongoing Notifications are removeable"
+            android:summaryOff="Ongoing Notifications are permanent" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="notification_panel_brightness_adjustment"
+            android:summaryOff="Currently Hidden"
+            android:summaryOn="Currently Shown"
+            android:title="Brightness Slider"/>
+        <PreferenceScreen android:title="Expanded view colors">
+            <SwitchPreference
+                android:title="Enable to apply Data Useage Color"
+                android:key="data_usage_colors"
+                android:summaryOn="enabled"
+                android:summaryOff="disabled" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Data Useage Color"
+                android:key="data_usage_color"
+                android:dependency="data_usage_colors"
+                android:summary="Choose color"
+                android:defaultValue="\#ffffffff"
+                alphaSlider="true"
+                hexValue="true" />
+            <SwitchPreference
+                android:title="Enable to apply Expanded view background color"
+                android:key="expanded_bg_colors"
+                android:summaryOn="enabled"
+                android:summaryOff="disabled" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Expanded view background color"
+                android:key="expanded_view_bg"
+                android:dependency="expanded_bg_colors"
+                android:summary="Choose color"
+                android:defaultValue="\#fffafafa"
+                alphaSlider="true"
+                hexValue="true" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Toggle On Color"
+                android:key="toggle_icon_on_color"
+                android:defaultValue="\#ff3b91dc"
+                hexValue="true"
+                alphaSlider="true"
+                android:summary="Set toggle On color" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Toggle Off Color"
+                android:key="toggle_icon_off_color"
+                android:defaultValue="\#ffb8c6d3"
+                hexValue="true"
+                alphaSlider="true"
+                android:summary="Set toggle Off color" />
+        </PreferenceScreen>
+        <PreferenceCategory android:title="Custom Notification Panel Background">
+        </PreferenceCategory>
+            <PreferenceScreen
+                android:dependency="enable_custom_bg"
+                android:key="notification_panel_bg"
+                android:title="Select Image"/>
+            <com.wubydax.romcontrol.prefs.SeekBarPreference
+                min="0"
+                android:defaultValue="255"
+                android:dependency="enable_custom_bg"
+                android:key="notification_panel_alpha"
+                android:max="255"
+                android:title="Image opacity"/>
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="enable_custom_bg"
+                android:summaryOff="Custom bg disabled"
+                android:summaryOn="Custom bg enabled"
+                android:title="Custom Background"/>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Recent Panel Options">
+        <SwitchPreference
+            android:title="Recent Panel Quick Launch"
+            android:key="recents_quick_launch_toggle"
+            android:defaultValue="false"
+            android:summaryOn="Quick Launch is shown"
+            android:summaryOff="Quick Launch is hidden" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="Virtual Buttons">
+        <PreferenceCategory android:title="Virtual Buttons (set one button on position)">
+            <PreferenceScreen android:title="Lock Button">
+                <CheckBoxPreference android:title="Right side" android:key="cocoyaya_rightcornerlock" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Left side" android:key="cocoyaya_leftcornerlock" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Center" android:key="cocoyaya_centerlock" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+            </PreferenceScreen>
+            <PreferenceScreen android:title="Home Button">
+                <CheckBoxPreference android:title="Right side" android:key="cocoyaya_rightcornerhome" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Left side" android:key="cocoyaya_leftcornerhome" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Center" android:key="cocoyaya_centerhome" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+            </PreferenceScreen>
+            <PreferenceScreen android:title="Recent Button">
+                <CheckBoxPreference android:title="Right side" android:key="cocoyaya_rightcornertask" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Left side" android:key="cocoyaya_leftcornertask" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+                <CheckBoxPreference android:title="Center" android:key="cocoyaya_centertask" android:defaultValue="false" android:summaryOn="On" android:summaryOff="Off" />
+            </PreferenceScreen>
+        </PreferenceCategory>
+    </PreferenceScreen>
 </PreferenceScreen>
