@@ -7,6 +7,8 @@
         <item>Reboot Menue Mods</item>
         <item>SystemUI Mods</item>
         <item>Launcher Mods</item>
+        <item>Phone Mods</item>
+        <item>Apps</item>
         <item>Set Theme</item>
     </string-array>
     <string-array name="clock_position_entries">

@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.wubydax.romcontrol.prefs.ColorPickerPreference
-        android:key="dialer_num_color"
-        android:title="Choose Dialer Num Color"
-        android:defaultValue="#0000ff"
-        alphaSlider="true"/>
     <SwitchPreference
+        android:title="USB plug in/out wakeup"
+        android:key="usb_plugged"
         android:defaultValue="true"
-        android:key="call_recording"
-        android:summaryOff="Call recording disabled"
-        android:summaryOn="Callrecording enabled"
-        android:title="Enable/Disable Call Recording" />
-    <com.wubydax.romcontrol.prefs.MyListPreference
-        android:defaultValue="2"
-        android:entries="@array/some_entries"
-        android:entryValues="@array/some_values"
-        android:key="some_position"
-        android:title="Some Position" />
+        android:summaryOn="On"
+        android:summaryOff="Off" />
 </PreferenceScreen>

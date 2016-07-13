@@ -122,6 +122,18 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
         PreferenceScreen ps = (PreferenceScreen) p;
         ps.setOnPreferenceClickListener(this);
 
+        if(ps.getIntent()!=null){
+            Intent intent = ps.getIntent();
+            try {
+                Drawable iconFromIntent = c.getPackageManager().getActivityIcon(intent);
+                ps.setIcon(iconFromIntent);
+            } catch (PackageManager.NameNotFoundException e) {
+                Map<Preference, PreferenceScreen> preferenceParentTree = buildPreferenceParentTree();
+                PreferenceScreen preferenceParent = preferenceParentTree.get(ps);
+                preferenceParent.removePreference(ps);
+            }
+        }
+
             /*Initiate icon view for preferences with keys that are interpreted as Intent
             *For more info see OnPreferenceClick method*/
         if (ps.getKey() != null) {
@@ -373,6 +385,18 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         e.printStackTrace();
                     }
                 }
+                if (key.equals("mod_date_colors")) {
+                    Command c = new Command(0, "pkill com.android.systemui");
+                    try {
+                        RootTools.getShell(true).add(c);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
@@ -601,8 +625,9 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             Intent getContentIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             getContentIntent.setType("image/*");
             pf.startActivityForResult(getContentIntent, 46);
-        } else if (preference.getKey() == null) {
-//            setToolbarForNested(preference);
+        } else if (preference.getKey() == null && preference.getIntent()!=null) {
+            Intent intentFromPreference = preference.getIntent();
+            c.startActivity(intentFromPreference);
         }
         return true;
     }

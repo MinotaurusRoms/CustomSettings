@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen
+        android:summary="Toolbox floating feature"
+        android:title="Toolbox">
+        <intent
+            android:targetClass="com.wubydax.toolboxsettings.ToolboxSettings"
+            android:targetPackage="com.wubydax.toolboxsettings"
+            android:action="android.intent.action.MAIN" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:title="Gradient Statusbar"
+        android:key="com.potato.gradientapp.MainActivity"
+        android:summary="Set Statusbar Color" />
+    <PreferenceScreen
+        android:summary="Custom battery chooser"
+        android:title="3Minit Battery Mod">
+        <intent
+            android:targetClass="com.three.minit.minitbatterysettings.MainActivity"
+            android:targetPackage="com.three.minit.minitbatterysettings.free"
+            android:action="android.intent.action.MAIN" />
+    </PreferenceScreen>
+</PreferenceScreen>

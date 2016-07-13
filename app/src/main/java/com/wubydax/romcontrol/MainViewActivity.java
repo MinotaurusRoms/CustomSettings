@@ -43,6 +43,7 @@ import com.stericson.RootShell.exceptions.RootDeniedException;
 import com.stericson.RootShell.execution.Command;
 import com.stericson.RootTools.RootTools;
 import com.wubydax.romcontrol.prefs.RebootMenueFragment;
+import com.wubydax.romcontrol.prefs.appFragment;
 import com.wubydax.romcontrol.prefs.launcherFragment;
 
 import java.io.IOException;
@@ -108,6 +109,8 @@ public class MainViewActivity extends AppCompatActivity
         int[] mIcons = {R.drawable.ic_settings,
                 R.drawable.ic_settings,
                 R.drawable.ic_settings,
+                R.drawable.ic_settings,
+                R.drawable.ic_settings,
                 R.drawable.ic_settings};
         for (int i = 0; i < mTitles.length && i < mIcons.length; i++) {
             com.wubydax.romcontrol.NavItem current = new com.wubydax.romcontrol.NavItem();
@@ -136,6 +139,12 @@ public class MainViewActivity extends AppCompatActivity
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new launcherFragment()).commitAllowingStateLoss();
                 break;
             case 3:
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new PhonePrefsFragment()).commitAllowingStateLoss();
+                break;
+            case 4:
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new appFragment()).commitAllowingStateLoss();
+                break;
+            case 5:
                 showThemeChooserDialog();
                 break;
 

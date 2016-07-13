@@ -161,9 +161,25 @@
             android:summaryOff="Currently Hidden"
             android:summaryOn="Currently Shown"
             android:title="Brightness Slider"/>
+        <SwitchPreference
+            android:title="Stock clock"
+            android:key="hide_header_stock_clock"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+        <SwitchPreference
+            android:title="Mod clock"
+            android:key="hide_header_mod_clock"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
+        <SwitchPreference
+            android:title="Mod clock second"
+            android:key="hide_header_mod_clock_second"
+            android:dependency="hide_header_mod_clock"
+            android:summaryOn="Show"
+            android:summaryOff="Hide" />
         <PreferenceScreen android:title="Expanded view colors">
             <SwitchPreference
-                android:title="Enable to apply Data Useage Color"
+                android:title="Data Useage Color"
                 android:key="data_usage_colors"
                 android:summaryOn="enabled"
                 android:summaryOff="disabled" />
@@ -176,7 +192,7 @@
                 alphaSlider="true"
                 hexValue="true" />
             <SwitchPreference
-                android:title="Enable to apply Expanded view background color"
+                android:title="Expanded view background color"
                 android:key="expanded_bg_colors"
                 android:summaryOn="enabled"
                 android:summaryOff="disabled" />
@@ -202,6 +218,48 @@
                 hexValue="true"
                 alphaSlider="true"
                 android:summary="Set toggle Off color" />
+            <SwitchPreference
+                android:title="Modded clock and date colors"
+                android:key="mod_date_colors"
+                android:summaryOn="enabled"
+                android:summaryOff="disabled" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Mod clock hours color"
+                android:key="header_mod_clock_hours_color"
+                android:dependency="hide_header_mod_clock"
+                android:defaultValue="\#ff000000"
+                alphaSlider="false" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Mod clock minute color"
+                android:key="header_mod_clock_minutes_color"
+                android:dependency="hide_header_mod_clock"
+                android:defaultValue="\#ff000000"
+                alphaSlider="false" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Mod clock second color"
+                android:key="header_mod_clock_seconds_color"
+                android:dependency="hide_header_mod_clock"
+                android:defaultValue="\#ff000000"
+                alphaSlider="false" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:title="Data color"
+                android:key="date_header_color"
+                android:dependency="hide_header_mod_clock"
+                android:defaultValue="\#ff000000"
+                alphaSlider="false" />
+            <SwitchPreference
+                android:title="Help text tap to .....color"
+                android:key="tap_color"
+                android:summaryOn="enabled"
+                android:summaryOff="disabled" />
+            <com.wubydax.romcontrol.prefs.ColorPickerPreference
+                android:dependency="tap_color"
+                android:title="Help text tap to .....color"
+                android:key="quickconnect_color"
+                android:summary="Choose color"
+                android:defaultValue="\#ff000000"
+                alphaSlider="false"
+                hexValue="true" />
         </PreferenceScreen>
         <PreferenceCategory android:title="Custom Notification Panel Background">
         </PreferenceCategory>
